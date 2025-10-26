@@ -1,0 +1,27 @@
+name: Simple Python CI
+
+# Trigger the workflow on every push to any branch
+on: [push]
+
+jobs:
+  build-and-test:
+    # Run the job on the latest Ubuntu runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out your repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up the Python environment
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Step 3: Run the build/test commands
+      # For this simple example, we just run the script.
+      # In a real project, you would run 'pip install -r requirements.txt'
+      # and then 'pytest' or 'unittest'.
+      - name: Run Python script
+        run: python main.py
